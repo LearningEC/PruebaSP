@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Prueba_SP.Models.Empleados>
+
+@{
+    ViewData["Title"] = "ShowEmp";
+}
+
+<h1>ShowEmp</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameEmp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressEmp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (System.Data.DataRow item in ViewBag.EmpAll.Rows) {
+        <tr>
+            <td>
+                @item["Emp_id"]
+            </td>
+            <td>
+                @item["NameEmp"]
+            </td>
+            <td>
+                @item["AddressEmp"]
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
